@@ -1,0 +1,25 @@
+---
+- name: Explicitly specifying named matched groups
+  replace:
+    path: /var/lib/pgsql/11/data/pg_hba.conf
+    regexp: 'ident'
+    replace: 'md5'
+    backup: yes
+
+- name: Open Access From External Resources
+  lineinfile:
+    destfile: /var/lib/pgsql/11/data/postgresql.conf
+    regexp: "listen_addresses ="
+    line: "listen_addresses = '*'"
+    state: present
+    backup: yes
+  when: external
+
+- name: Disable Access From External Resources
+  lineinfile:
+    destfile: /var/lib/pgsql/11/data/postgresql.conf
+    regexp: "listen_addresses ="
+    line: "listen_addresses = 'localhost'"
+    state: present
+    backup: yes
+  when: not external

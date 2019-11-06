@@ -1,0 +1,22 @@
+---
+- name: Remove old version of Postgresql
+  yum:
+    name: postgresql-*
+    state: absent
+
+- name: Add the postgresql repository to your machine by installing PostgreSQL repo rpm (Redhat)
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-redhat11-11-2.noarch.rpm
+    state: present
+  when: ansible_facts['distribution'] == "RedHat"
+
+- name: Add the postgresql repository to your machine by installing PostgreSQL repo rpm (CentOS)
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
+    state: present
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: Install PostgreSQL 11
+  yum: 
+    name: ['postgresql11-server', 'postgresql11', 'python-psycopg2']
+    state: present

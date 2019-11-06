@@ -1,0 +1,12 @@
+---
+# Installation and Configuration of Postgresql v11
+- name: Postgresql Binaries Installation 
+  import_tasks: setup.yml
+- name: Postgresql Server Initialization/Start/Enable
+  import_tasks: init.yml
+- name: Postgresql Server Configuration
+  import_tasks: config.yml
+- name: Postgresql Service Start/Enable
+  import_tasks: start.yml
+- name: Postgresql DB Creation
+  import_tasks: create.yml

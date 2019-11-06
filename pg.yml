@@ -1,0 +1,6 @@
+---
+# Playbook to install Postgresql v11
+- hosts: postgresql
+  become: yes
+  roles:
+    - role: postgresql

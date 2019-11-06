@@ -1,0 +1,20 @@
+---
+- name: Create the "{{ db_user_name }}" user
+  postgresql_user:
+    name: "{{ db_user_name }}"
+    password: "{{ db_user_password }}"
+    encrypted: True
+  become_user: postgres
+
+# Note: Default limit for the number of concurrent connections to a specific database is "-1"
+- name: create the "{{ db_name }}" db
+  postgresql_db:
+    name: "{{ db_name }}"
+    owner: "{{ db_user_name }}"
+    encoding: UTF8
+  become_user: postgres
+
+
+
+
+  
