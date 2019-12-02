@@ -1,5 +1,6 @@
 ---
-db_user_name: 
-db_user_password: 
-db_name: 
-external: <true to allow etrenal access or false to deny it>
+db_user_name: 'jirauser' 
+db_user_password: 'jirauser'
+db_name: 'jiradb' 
+#true to allow etrenal access or false to deny it
+external: false

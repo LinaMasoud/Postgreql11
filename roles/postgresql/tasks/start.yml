@@ -1,9 +1,9 @@
 - name: Starting PostgreSQL service
   service:
-    name: postgresql-11
+    name:  postgresql-9.6
     state: started
 
 - name: Enable PostgreSQL service to Auto Start
   service:
-    name: postgresql-11
+    name:  postgresql-9.6
     enabled: yes

@@ -1,11 +1,11 @@
 ---
 - name: check db Data directory is not empty
   find:
-    paths: '/var/lib/pgsql/11/data/'
+    paths: '/var/lib/pgsql/9.6/data'
   register: filesFound
 
 - name: Database Initialization
-  command: /usr/pgsql-11/bin/postgresql-11-setup initdb
+  command: /usr/pgsql-9.6/bin/postgresql96-setup initdb
   when: filesFound.matched == 0
 
 - debug:
